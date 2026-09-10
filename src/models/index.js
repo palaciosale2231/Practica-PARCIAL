@@ -7,3 +7,7 @@ import { PersonModel } from "./person.model.js";
 
 //un usuario pertenece a una persona.
 UserModel.belongsTo(PersonModel, {foreignKey: "person_id", as: "owner"})
+ 
+
+// una persona puede tener un usuario
+PersonModel.hasOne(UserModel,{foreignKey:"", as: ""})
