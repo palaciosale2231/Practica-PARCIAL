@@ -1,4 +1,3 @@
-
 import { UserModel } from "../models/user.model.js";
 
 // GET /api/users - Obtener todos los usuarios
@@ -35,14 +34,44 @@ export const createUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     // Validaciones
-    if (!name || typeof name !== "string" || name.trim() === "" || name.length > 100) {
-      return res.status(400).json({ message: "El nombre es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !name ||
+      typeof name !== "string" ||
+      name.trim() === "" ||
+      name.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El nombre es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!email || typeof email !== "string" || email.trim() === "" || email.length > 100) {
-      return res.status(400).json({ message: "El email es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !email ||
+      typeof email !== "string" ||
+      email.trim() === "" ||
+      email.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El email es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!password || typeof password !== "string" || password.trim() === "" || password.length > 100) {
-      return res.status(400).json({ message: "La contraseña es obligatoria y debe tener como máximo 100 caracteres" });
+    if (
+      !password ||
+      typeof password !== "string" ||
+      password.trim() === "" ||
+      password.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "La contraseña es obligatoria y debe tener como máximo 100 caracteres",
+        });
     }
 
     // Unicidad de email
@@ -75,21 +104,53 @@ export const updateUser = async (req, res) => {
     }
 
     // Validaciones
-    if (!name || typeof name !== "string" || name.trim() === "" || name.length > 100) {
-      return res.status(400).json({ message: "El nombre es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !name ||
+      typeof name !== "string" ||
+      name.trim() === "" ||
+      name.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El nombre es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!email || typeof email !== "string" || email.trim() === "" || email.length > 100) {
-      return res.status(400).json({ message: "El email es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !email ||
+      typeof email !== "string" ||
+      email.trim() === "" ||
+      email.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El email es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!password || typeof password !== "string" || password.trim() === "" || password.length > 100) {
-      return res.status(400).json({ message: "La contraseña es obligatoria y debe tener como máximo 100 caracteres" });
+    if (
+      !password ||
+      typeof password !== "string" ||
+      password.trim() === "" ||
+      password.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "La contraseña es obligatoria y debe tener como máximo 100 caracteres",
+        });
     }
 
     // Verificar unicidad de email al modificar
     if (email !== user.email) {
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
-        return res.status(400).json({ message: "El email ya pertenece a otro usuario" });
+        return res
+          .status(400)
+          .json({ message: "El email ya pertenece a otro usuario" });
       }
     }
 

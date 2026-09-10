@@ -4,7 +4,6 @@ import { sequelize } from "../config/database.js";
 export const PersonModel = sequelize.define(
   "Person",
   {
-    
     name: {
       type: DataTypes.STRING(100),
       allowNull: false,
@@ -14,7 +13,6 @@ export const PersonModel = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    
   },
   {
     // Other model options go here

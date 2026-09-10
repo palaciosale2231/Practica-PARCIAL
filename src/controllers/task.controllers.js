@@ -34,20 +34,44 @@ export const createTask = async (req, res) => {
     const { title, description, isComplete } = req.body;
 
     // Validaciones
-    if (!title || typeof title !== "string" || title.trim() === "" || title.length > 100) {
-      return res.status(400).json({ message: "El título es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !title ||
+      typeof title !== "string" ||
+      title.trim() === "" ||
+      title.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El título es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!description || typeof description !== "string" || description.trim() === "" || description.length > 100) {
-      return res.status(400).json({ message: "La descripción es obligatoria y debe tener como máximo 100 caracteres" });
+    if (
+      !description ||
+      typeof description !== "string" ||
+      description.trim() === "" ||
+      description.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "La descripción es obligatoria y debe tener como máximo 100 caracteres",
+        });
     }
     if (isComplete !== undefined && typeof isComplete !== "boolean") {
-      return res.status(400).json({ message: "El campo isComplete debe ser de tipo booleano" });
+      return res
+        .status(400)
+        .json({ message: "El campo isComplete debe ser de tipo booleano" });
     }
 
     // Unicidad de título
     const existingTask = await TaskModel.findOne({ where: { title } });
     if (existingTask) {
-      return res.status(400).json({ message: "El título de la tarea ya existe" });
+      return res
+        .status(400)
+        .json({ message: "El título de la tarea ya existe" });
     }
 
     const task = await Task.create({
@@ -78,21 +102,47 @@ export const updateTask = async (req, res) => {
     }
 
     // Validaciones
-    if (!title || typeof title !== "string" || title.trim() === "" || title.length > 100) {
-      return res.status(400).json({ message: "El título es obligatorio y debe tener como máximo 100 caracteres" });
+    if (
+      !title ||
+      typeof title !== "string" ||
+      title.trim() === "" ||
+      title.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "El título es obligatorio y debe tener como máximo 100 caracteres",
+        });
     }
-    if (!description || typeof description !== "string" || description.trim() === "" || description.length > 100) {
-      return res.status(400).json({ message: "La descripción es obligatoria y debe tener como máximo 100 caracteres" });
+    if (
+      !description ||
+      typeof description !== "string" ||
+      description.trim() === "" ||
+      description.length > 100
+    ) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "La descripción es obligatoria y debe tener como máximo 100 caracteres",
+        });
     }
     if (isComplete !== undefined && typeof isComplete !== "boolean") {
-      return res.status(400).json({ message: "El campo isComplete debe ser de tipo booleano" });
+      return res
+        .status(400)
+        .json({ message: "El campo isComplete debe ser de tipo booleano" });
     }
 
     // Verificar unicidad de título al modificar
     if (title !== task.title) {
       const existingTask = await TaskModel.findOne({ where: { title } });
       if (existingTask) {
-        return res.status(400).json({ message: "El título ingresado ya está en uso por otra tarea" });
+        return res
+          .status(400)
+          .json({
+            message: "El título ingresado ya está en uso por otra tarea",
+          });
       }
     }
 
