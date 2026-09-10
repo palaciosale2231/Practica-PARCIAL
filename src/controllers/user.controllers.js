@@ -1,3 +1,4 @@
+
 import { UserModel } from "../models/user.model.js";
 
 // GET /api/users - Obtener todos los usuarios
