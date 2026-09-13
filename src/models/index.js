@@ -17,13 +17,17 @@ PersonModel.hasMany(RoleModel, { foreignKey: "rol_id", as: "rol" });
 
 //relacion mucho a muchos
 UserModel.belongsToMany(RoleModel, {
-  thorough: UserRoleModel,
+  through: UserRoleModel,
   foreignKey: "user_id",
   as: "roles ",
 });
 
 UserModel.belongsToMany(UserModel, {
-  thorough: UserRoleModel,
+  through: UserRoleModel,
   foreignKey: "role_id",
   as: "users",
 });
+
+// Agrega esto al final de src/models/index.js (después de definir las relaciones)
+
+export { UserModel, PersonModel, RoleModel, UserRoleModel, sequelize };
